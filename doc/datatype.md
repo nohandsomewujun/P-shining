@@ -88,6 +88,16 @@ client向sever传输消息：
     }
 }
 ```
+闲聊
+```json
+{
+    "type": "cmd",
+    "content": {
+        "cmd_type": "chat",
+        "text": ""
+    }
+}
+```
 用户退出：
 ```json
 {
