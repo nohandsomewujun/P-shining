@@ -91,6 +91,7 @@ client向sever传输消息：
         "cmd_type": "story"
     }
 }
+```
 讲笑话
 ```json
 {
