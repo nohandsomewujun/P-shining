@@ -10,11 +10,12 @@ USERS = {}
 async def handler(websocket):
     async for json_message in websocket:
         msg = loads(json_message)
+        print(msg)
         if msg["type"] == "login":
             sendmsg_json = sever_msg_func.deal_login_msg(msg)
             tmp_dict = loads(sendmsg_json)
-            if tmp_dict["type"] == "pass":
-                USERS[msg["content"]["name"]] = websocket
+            
+            USERS[msg["content"]["name"]] = websocket
             await websocket.send(sendmsg_json)
             print("debug: send{}".format(sendmsg_json))
 

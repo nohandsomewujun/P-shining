@@ -1,7 +1,6 @@
 from json import dumps
 from json import load
 
-from itsdangerous import json
 
 def deal_login_msg(msg):
     username = msg["content"]["name"]
