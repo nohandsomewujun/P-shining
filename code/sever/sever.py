@@ -12,12 +12,13 @@ async def handler(websocket):
         msg = loads(json_message)
         print(msg)
         if msg["type"] == "login":
-            sendmsg_json = sever_msg_func.deal_login_msg(msg)
-            tmp_dict = loads(sendmsg_json)
-            
+            sendmsg_json = sever_msg_func.deal_login_msg(msg)        
             USERS[msg["content"]["name"]] = websocket
             await websocket.send(sendmsg_json)
             print("debug: send{}".format(sendmsg_json))
+        elif msg["type"] == "logout":
+            del USERS[msg["content"]["name"]]
+            print(msg["content"]["name"] + " logout!")
 
         
         

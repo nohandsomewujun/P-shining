@@ -54,6 +54,7 @@ def on_close(ws, close_status_code, close_msg):
 
 
 def on_message(ws, json_message):
+    global username
     msg = loads(json_message)
     if msg["type"] == "shutdown":
         print("wrong username or password!")
