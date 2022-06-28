@@ -19,6 +19,31 @@ async def handler(websocket):
         elif msg["type"] == "logout":
             del USERS[msg["content"]["name"]]
             print(msg["content"]["name"] + " logout!")
+        elif msg["type"] == "pass":
+            pass
+        elif msg["type"] == "cmd":
+            if msg["content"]["cmd_type"] == "weather":
+                # TODO
+                pass
+            elif msg["content"]["cmd_type"] == "epidemic":
+                # TODO
+                pass
+            elif msg["content"]["cmd_type"] == "send_msg":
+                # TODO
+                pass
+            elif msg["content"]["cmd_type"] == "mail":
+                # TODO
+                pass
+            elif msg["content"]["cmd_type"] == "story":
+                # TODO
+                pass
+            elif msg["content"]["cmd_type"] == "joke":
+                # TODO
+                pass
+            elif msg["content"]["cmd_type"] == "chat":
+                # TODO
+                pass
+        
 
         
         
