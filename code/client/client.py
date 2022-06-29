@@ -71,6 +71,19 @@ def on_message(ws, json_message):
         os._exit(0)
     elif msg["type"] == "pass":
         pass
+    elif msg["type"] == "cmd_recv":
+        if msg["content"]["cmd_type"] == "epidemic":
+            print(msg["content"]["text"])
+            # TODO:read it
+        elif msg["content"]["cmd_type"] == "weather":
+            print(msg["content"]["text"])
+            # TODO:read it
+        elif msg["content"]["cmd_type"] == "send_msg":
+            print(msg["content"]["from_name"] + " : " + msg["content"]["text"])
+            # TODO:read it
+        elif msg["content"]["cmd_type"] == "joke":
+            print(msg["content"]["text"])
+            # TODO:read it
 
 
 
