@@ -17,12 +17,6 @@ client向sever传输消息：
     }
 }
 ```
-用户被通知关闭：
-```json
-{
-    "type": "shutdown",
-}
-```
 空消息，不作处理：
 ```json
 {
@@ -120,3 +114,62 @@ client向sever传输消息：
     }
 }
 ```
+
+客户端接受到的消息格式：
+
+
+用户被通知关闭：
+```json
+{
+    "type": "shutdown",
+}
+```
+空消息，不作处理：
+```json
+{
+    "type": "pass"
+}
+```
+
+接收到疫情的回复
+```json
+{
+    "type": "cmd_recv",
+    "content": {
+        "cmd_type": "epidemic",
+        "text": "{...}"
+    }
+}
+```
+接收到天气的回复
+```json
+{
+    "type": "cmd_recv",
+    "content": {
+        "cmd_type": "weather",
+        "text": "{...}"
+    }
+}
+```
+接受某个用户的消息
+```json
+{
+    "type": "cmd_recv",
+    "content": {
+        "cmd_type": "send_msg",
+        "from_name": "",
+        "text": ""
+    }
+}
+```
+接受到笑话
+```json
+{
+    "type": "cmd_recv",
+    "content": {
+        "cmd_type": "joke",
+        "text": ""
+    }
+}
+```
+
