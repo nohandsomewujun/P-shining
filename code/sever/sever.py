@@ -2,7 +2,13 @@ import asyncio
 import websockets
 from json import loads
 import sever_msg_func
+import sys
 
+# 添加所用到的模块路径
+sys.path.append("./modules/get_epi")
+
+
+import get_epi
 
 # 存放现在连接上的所有客户
 USERS = {}
