@@ -64,6 +64,5 @@ def load_one_joke():
     return joke[i][j]
 
 
-store_joke()
-for i in range(30):
-    print(load_one_joke())
+# store_joke()
+# print(load_one_joke())

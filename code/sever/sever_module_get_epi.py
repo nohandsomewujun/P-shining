@@ -115,7 +115,3 @@ def get_date():
     date = mo.group(1) + mo.group(2) + mo.group(3)
     return date
 
-
-position = input("输入想要查阅的省份或城市名：")
-print(get_epi(position))
-

@@ -20,6 +20,3 @@ def get_Weather(city):
     getback['今日最低温度'] = soup.forecast.low.text[3:]
     return getback
 
-
-city = input("输入一个城市")
-info = get_Weather(city)
