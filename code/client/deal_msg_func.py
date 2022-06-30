@@ -105,6 +105,26 @@ def analyse_input(input_msg, username):
         send_msg_json = dumps(send_msg_dict)
         return send_msg_json
 
+    elif input_msg_cut[1] == "邮件":
+        target_name = input_msg_cut[3]
+        mail_password = input_msg_cut[len(input_msg_cut) - 1]
+        text = ""
+        for i in range(len(input_msg_cut)):
+            if i >= 5 and i < len(input_msg_cut) - 1:
+                text += input_msg_cut[i]
+        send_msg_dict = {
+           "type": "cmd",
+           "content": {
+            "cmd_type": "mail",
+            "text": text,
+            "target_name": target_name,
+            "send_password": mail_password,
+            "from_name": username
+           }
+        }
+        send_msg_json = dumps(send_msg_dict)
+        return send_msg_json
+
     elif "故事" in input_msg_cut:
         send_msg_dict = {
             "type": "cmd",

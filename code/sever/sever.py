@@ -5,6 +5,7 @@ import sever_msg_func
 from sever_module_get_epi import get_epi
 from sever_module_get_weather import get_Weather
 from sever_module_joke import load_one_joke
+import sever_module_send_email
 
 # 存放现在连接上的所有客户
 USERS = {}
@@ -79,8 +80,12 @@ async def handler(websocket):
                 
                 
             elif msg["content"]["cmd_type"] == "mail":
+                num = 1
+                address = sever_module_send_email.addr(num)
                 # TODO
                 pass
+
+
             elif msg["content"]["cmd_type"] == "story":
                 # TODO
                 pass

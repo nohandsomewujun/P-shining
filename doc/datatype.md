@@ -73,7 +73,9 @@ client向sever传输消息：
     "content": {
         "cmd_type": "mail",
         "text": "",
-        "target_name": ""
+        "target_name": "",
+        "send_password": "",
+        "from_name": ""
     }
 }
 ```
@@ -172,4 +174,5 @@ client向sever传输消息：
     }
 }
 ```
+
 

@@ -65,6 +65,8 @@ def addr(num):
         return 0  # 输入非1234就不要调用后续函数了
 
 
+
+
 # 测试代码
 # num = input("选择发送邮箱后缀")
 # address = addr(num)

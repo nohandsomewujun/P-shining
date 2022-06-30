@@ -13,7 +13,7 @@ def deal_login_msg(msg):
     
     # 检验
     if username in user_dict["username"]:
-        if user_dict["username"][username] == password:
+        if user_dict["username"][username]["password"] == password:
             # 成功校验
             pass_dict = {
                 "type": "pass"

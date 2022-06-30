@@ -1,6 +1,12 @@
 {
     "username": {
-        "alice": "1001",
-        "bob": "0022"
+        "alice": {
+            "password": "1001",
+            "mail_addr": ""
+        },
+        "bob": {
+            "password": "0022",
+            "mail_addr": ""
+        }
     }
 }
