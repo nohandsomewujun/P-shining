@@ -1,3 +1,4 @@
+from curses import window
 import websocket
 import threading
 import os
@@ -6,6 +7,8 @@ from json import dumps
 from json import loads
 import deal_msg_func
 import pyttsx3
+import PySimpleGUI as sg
+
 
 username = ""
 
@@ -21,6 +24,7 @@ def on_open(ws):
 
     # 对于单个用户采用多线程的方式来实现输出输入的分隔
     def run(*args):
+        global window
         while True:
             sendmsg = input()
             sendmsg_json = deal_msg_func.analyse_input(sendmsg, username)
@@ -55,6 +59,7 @@ def on_close(ws, close_status_code, close_msg):
 
 def on_message(ws, json_message):
     global username
+    global window
     msg = loads(json_message)
     if msg["type"] == "shutdown":
         print("wrong username or password!")
