@@ -4,7 +4,7 @@
 # @File    : movie_info.py
 # 测试过程中小概率出错。建议加个异常判断
 
-from spiders.spi_douban import doubanSpider
+from spi_douban import doubanSpider
 from bs4 import BeautifulSoup
 from spiders.items import Tutorial2Item
 import urllib.request
