@@ -77,6 +77,12 @@ async def handler(websocket):
                 send_msg_json = dumps(send_msg_dict)
                 await target_websocket.send(send_msg_json)
                 print("debug: send{}".format(send_msg_json))
+                send_msg_dict = {
+                    "type": "pass"
+                }
+                send_msg_json = dumps(send_msg_dict)
+                await websocket.send(send_msg_json)
+                print("debug: send{}".format(send_msg_json))
                 
                 
             elif msg["content"]["cmd_type"] == "mail":
