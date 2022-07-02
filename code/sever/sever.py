@@ -6,9 +6,12 @@ from sever_module_get_epi import get_epi
 from sever_module_get_weather import get_Weather
 from sever_module_joke import load_one_joke
 import sever_module_send_email
+import bot
 
 # 存放现在连接上的所有客户
 USERS = {}
+b = bot.bot()
+
 
 async def handler(websocket):
     async for json_message in websocket:
@@ -25,7 +28,12 @@ async def handler(websocket):
             print(msg["content"]["name"] + " logout!")
 
         elif msg["type"] == "pass":
-            pass
+            send_msg_dict = {
+                "type": "pass"
+            }
+            send_msg_json = dumps(send_msg_dict)
+            await websocket.send(send_msg_json)
+            print("debug: send{}".format(send_msg_json))
 
         elif msg["type"] == "cmd":
             if msg["content"]["cmd_type"] == "weather":
@@ -109,8 +117,19 @@ async def handler(websocket):
                 print("debug: send{}".format(send_msg_json))
 
             elif msg["content"]["cmd_type"] == "chat":
-                # TODO
-                pass
+                input_s = msg["content"]["text"]
+                output_s = b.speak(input_s)
+                send_msg_dict = {
+                    "type": "cmd_recv",
+                    "content": {
+                        "cmd_type": "chat",
+                        "text": output_s
+                    }
+                }
+                send_msg_json = dumps(send_msg_dict)
+                await websocket.send(send_msg_json)
+                print("debug: send{}".format(send_msg_json))
+                
         
 
         

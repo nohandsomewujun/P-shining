@@ -7,6 +7,7 @@ import jieba
 import jieba.posseg as pseg #词性标注
 import jieba.analyse as anls
 from sqlalchemy import false #关键词提取
+import time
 
 
 
@@ -14,6 +15,7 @@ from sqlalchemy import false #关键词提取
 #loginmsg#
 ##########
 def gen_login_msg():
+    
     username = input("username:")
     password = input("password:")
     tmpdict = {

@@ -4,9 +4,19 @@ import deal_msg_func
 from json import dumps, loads
 import os
 import aioconsole
+import PySimpleGUI as sg
+import pyttsx3
 
 username = ""
 
+'''
+layout = [[sg.Text("What's your name?")],
+              [sg.Text(size=(100, 1), key='-OUTPUT-')],
+              [sg.Button('Ok'), sg.Button('Quit')]]
+
+    # Create the window
+window = sg.Window('Window Title', layout, finalize=True)
+'''
 
 async def handout_msg_from_sever(ws):
     global username
@@ -17,16 +27,24 @@ async def handout_msg_from_sever(ws):
     elif msg["type"] == "cmd_recv":
         if msg["content"]["cmd_type"] == "epidemic":
             print(msg["content"]["text"])
-            # TODO:read it
+            pyttsx3.speak(str(msg["content"]["text"]))
         elif msg["content"]["cmd_type"] == "weather":
             print(msg["content"]["text"])
-            # TODO:read it
+            pyttsx3.speak("当前温度" + msg["content"]["text"]["当前温度"][0:2] + "度")
+            pyttsx3.speak("当前湿度" + "百分之" + msg["content"]["text"]["当前湿度"][0:2])
+            pyttsx3.speak("当前风向" + msg["content"]["text"]["当前风向"])
+            pyttsx3.speak("今日最高温度" + msg["content"]["text"]["今日最高温度"][0:2] + "度")
+            pyttsx3.speak("今日最低温度" + msg["content"]["text"]["今日最低温度"][0:2] + "度")
         elif msg["content"]["cmd_type"] == "send_msg":
             print(msg["content"]["from_name"] + " : " + msg["content"]["text"])
-            # TODO:read it
+            pyttsx3.speak(msg["content"]["from_name"] + "和你说" + msg["content"]["text"])
         elif msg["content"]["cmd_type"] == "joke":
             print(msg["content"]["text"])
-            # TODO:read it
+            pyttsx3.speak("我要说了，听好了")
+            pyttsx3.speak(msg["content"]["text"])
+        elif msg["content"]["cmd_type"] == "chat":
+            print(msg["content"]["text"])
+            pyttsx3.speak(msg["content"]["text"])
         
     # 为了实现asyncio，如果是他人发送给自己的消息，就再去接受一次
     if "content" in msg and "cmd_type" in msg["content"]:
@@ -39,16 +57,24 @@ async def handout_msg_from_sever(ws):
             elif msg["type"] == "cmd_recv":
                 if msg["content"]["cmd_type"] == "epidemic":
                     print(msg["content"]["text"])
-                    # TODO:read it
+                    pyttsx3.speak(str(msg["content"]["text"]))
                 elif msg["content"]["cmd_type"] == "weather":
                     print(msg["content"]["text"])
-                    # TODO:read it
+                    pyttsx3.speak("当前温度" + msg["content"]["text"]["当前温度"][0:2] + "度")
+                    pyttsx3.speak("当前湿度" + "百分之" + msg["content"]["text"]["当前湿度"][0:2])
+                    pyttsx3.speak("当前风向" + msg["content"]["text"]["当前风向"])
+                    pyttsx3.speak("今日最高温度" + msg["content"]["text"]["今日最高温度"][0:2] + "度")
+                    pyttsx3.speak("今日最低温度" + msg["content"]["text"]["今日最低温度"][0:2] + "度")
                 elif msg["content"]["cmd_type"] == "send_msg":
                     print(msg["content"]["from_name"] + " : " + msg["content"]["text"])
-                    # TODO:read it
+                    pyttsx3.speak(msg["content"]["from_name"] + "和你说" + msg["content"]["text"])
                 elif msg["content"]["cmd_type"] == "joke":
                     print(msg["content"]["text"])
-                    # TODO:read it
+                    pyttsx3.speak("我要说了，听好了")
+                    pyttsx3.speak(msg["content"]["text"])
+                elif msg["content"]["cmd_type"] == "chat":
+                    print(msg["content"]["text"])
+                    pyttsx3.speak(msg["content"]["text"])
 
     return ""
 
