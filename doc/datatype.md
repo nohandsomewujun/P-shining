@@ -174,5 +174,15 @@ client向sever传输消息：
     }
 }
 ```
+接受到闲聊
+```json
+{
+    "type": "cmd_recv",
+    "content": {
+        "cmd_type": "chat",
+        "text": ""
+    }
+}
+```
 
 

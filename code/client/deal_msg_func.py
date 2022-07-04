@@ -6,8 +6,6 @@ from telnetlib import LOGOUT
 import jieba
 import jieba.posseg as pseg #词性标注
 import jieba.analyse as anls
-from sqlalchemy import false #关键词提取
-import time
 
 
 
@@ -41,7 +39,7 @@ def deal_shutdown_msg(ws):
 #deal input#
 ############
 def analyse_input(input_msg, username):
-    input_msg_cut = jieba.lcut(input_msg, cut_all=false)
+    input_msg_cut = jieba.lcut(input_msg, cut_all=False)
     print(input_msg_cut)
     if input_msg_cut[0] == "查询":
         # 查询天气或者是疫情
@@ -103,26 +101,6 @@ def analyse_input(input_msg, username):
                 "cmd_type": "chat",
                 "text": tmp_str 
             }
-        }
-        send_msg_json = dumps(send_msg_dict)
-        return send_msg_json
-
-    elif input_msg_cut[1] == "邮件":
-        target_name = input_msg_cut[3]
-        mail_password = input_msg_cut[len(input_msg_cut) - 1]
-        text = ""
-        for i in range(len(input_msg_cut)):
-            if i >= 5 and i < len(input_msg_cut) - 1:
-                text += input_msg_cut[i]
-        send_msg_dict = {
-           "type": "cmd",
-           "content": {
-            "cmd_type": "mail",
-            "text": text,
-            "target_name": target_name,
-            "send_password": mail_password,
-            "from_name": username
-           }
         }
         send_msg_json = dumps(send_msg_dict)
         return send_msg_json
